@@ -9,4 +9,4 @@ TrackExpenses is a financial management app that will keep track of your weeekly
 
 #### Project Management and Userstories Board
 
-Visit [Trello](https://trello.com/b/265p4m3c/sociall-media) for detailed user stories and storyboards. This trello board is of the previous propsed project. Not this. It'll soon be updated. 
+Visit [Trello](https://trello.com/b/gjOaPx2l/trackexpenses) for detailed user stories and storyboards. 

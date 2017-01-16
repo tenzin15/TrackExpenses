@@ -1,9 +1,8 @@
-.week {
-  height: 40rem;
-  width: 80%;
+.Monday {
+  height: 10rem;
+  width: 100%;
   margin: 0 auto;
-  margin-top: 5rem;
-  background-color: lightgrey;
+  background-color: lightblue;
   border: 0.1rem solid black;
 }
 
@@ -13,14 +12,15 @@
   border: 0.1rem solid black;
 }
 
-#h3_week {
+#h3_addButton {
   position: relative;
   float: left;
   padding-left: 1rem;
 }
 
-#h3_total {
+#h3_monday_date {
   position: relative;
-  float: right;
+  width: 20%;
+  margin: 0 auto;
   padding-right: 1rem;
 }

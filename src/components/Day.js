@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/Day.css';
 import Expense from './Expense'
+import moment from 'moment'
 
 class Day extends Component {
   render() {
@@ -8,15 +9,19 @@ class Day extends Component {
       if (this.props.expenseList) {
         return (
           this.props.expenseList.reverse().map(oneExpenseObject =>
-              <Expense key={oneExpenseObject.createdAt}
+              <Expense
+                     uniqueKey={oneExpenseObject.uniqueKey}
                      itemTitle={oneExpenseObject.title}
                      itemAmount={oneExpenseObject.amount}
-                     createdAt={oneExpenseObject.createdAt}
+                     createdAt={moment(oneExpenseObject.createdAt).format('LT')}
+                     deleteAnItem={this.props.deleteAnItem}
+                     day={this.props.day}
               />
           )
         )
       }
     }
+
     return (
       <div className="Day" id={this.props.day}>
         <header id="day_total_header">
@@ -26,28 +31,31 @@ class Day extends Component {
         <input
           id="itemTitle"
           type="text"
-          placeholder="Enter a new item here to add to the list."
+          placeholder=" What did you spend your money on?"
           ref={(input) => { this.itemTitleInput = input; }}
         />
-        <span id="itemAmountLabel"> Item Amount: </span>
+        <span id="itemAmountLabel"> Item Amount: $</span>
         <input
           id="itemAmount"
           type="number"
-          placeholder="Enter the $ amount for this item"
+          placeholder=" How much you spend?"
           ref={(input) => { this.itemAmountInput = input; }}
         />
         <button
           id="addButton"
           onClick={() =>
-            this.props.createNewItem(this.itemTitleInput.value,
+            this.props.createNewItem
+            (
+              this.itemTitleInput.value,
               this.itemAmountInput.value,
               this.props.day,
-              this.props.date)
+              this.props.date
+            )
           }>
           Add New Item
         </button>
         {/* All the current expenses in the list for a day will render below */}
-        <ul className="Day" id={this.props.day}>
+        <ul id={this.props.day}>
           {returnContentWhenDefined()}
         </ul>
       </div>

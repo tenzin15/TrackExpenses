@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Match, Miss } from 'react-router';
 import './styles/App.css';
 import Day from './components/Day';
 import Week from './components/Week';
-import Login from './components/Login';
 import axios from 'axios';
 
 class App extends Component {
@@ -26,6 +24,7 @@ class App extends Component {
       sundayExpense: []
     }
     this.createNewItem = this.createNewItem.bind(this);
+    this.deleteAnItem = this.deleteAnItem.bind(this);
     this.updateStateWithCurrentDayItem = this.updateStateWithCurrentDayItem.bind(this);
     this.downloadDailyExpense = this.downloadDailyExpense.bind(this);
   }
@@ -153,11 +152,11 @@ class App extends Component {
   }
 
   createNewItem(itemTitle, itemAmount, itemCreationDay) {
-    console.log(itemTitle, itemAmount, itemCreationDay);
     let newItem = {
       title: itemTitle,
       amount: itemAmount,
-      createdAt: new Date };
+      createdAt: new Date
+    };
     axios({
       url: `/expenseList/${this.state.weekName}/${itemCreationDay}/expense.json`,
       baseURL: 'https://trackexpenses-4bcf1.firebaseio.com/',
@@ -165,6 +164,8 @@ class App extends Component {
       data: newItem
     })
     .then((response) => {
+      console.log(response.data.name);
+      newItem['uniqueKey'] = response.data.name;
       this.updateStateWithCurrentDayItem(itemCreationDay, newItem);
     })
     .catch((error) => {
@@ -172,9 +173,20 @@ class App extends Component {
     });
   }
 
+  deleteAnItem(itemCreationDay, listUniqueKey) {
+    console.log(itemCreationDay, listUniqueKey);
+    axios({
+      url: `/expenseList/${this.state.weekName}/${itemCreationDay}/expense/${listUniqueKey}.json`,
+      baseURL: 'https://trackexpenses-4bcf1.firebaseio.com/',
+      method: "DELETE"
+    })
+    .then((response) => {
+      console.log(response);
+    })
+  }
+
   render() {
     return (
-      <BrowserRouter>
         <div className="App">
           <Week week={this.state.week} total={this.state.total} />
           <Day
@@ -182,9 +194,9 @@ class App extends Component {
             date={this.state.date[0]}
             createNewItem = {this.createNewItem}
             expenseList = {this.state.mondayExpense}
+            deleteAnItem = {this.deleteAnItem}
           />
         </div>
-      </BrowserRouter>
     );
   }
 }

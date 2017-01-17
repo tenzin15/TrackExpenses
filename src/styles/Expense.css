@@ -1,9 +1,20 @@
 li {
   list-style: none;
-  border: 0.1rem solid lightblue;
 }
 .wrapInOneLi {
   float: left;
   margin-right: 15rem;
   padding: 0.5rem;
+}
+
+.editButton, .deleteButton {
+  float: right;
+  border: 0.1rem solid blue;
+  background-color: #37BDCA;
+  margin: 0.3rem;
+  height: 1.5rem;
+}
+
+.editButton {
+  margin-right: 1rem;
 }

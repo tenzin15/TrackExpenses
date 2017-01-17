@@ -5,9 +5,19 @@ class Expense extends React.Component {
   render() {
     return (
         <li>
-          <span className="wrapInOneLi">{this.props.itemTitle}</span>
-          <span className="wrapInOneLi">{this.props.itemAmount}</span>
-          <span className="wrapInOneLi">{this.props.createdAt}</span>
+          <span className="wrapInOneLi" id="wrapInOneLi0">{this.props.itemTitle}</span>
+          <span className="wrapInOneLi" id="wrapInOneLi1">$ {this.props.itemAmount}</span>
+          <span className="wrapInOneLi" id="wrapInOneLi2">{this.props.createdAt}</span>
+          <button className="editButton">Edit</button>
+          <div>
+            {this.props.uniqueKey}
+          </div>
+          {}
+          <button
+            className="deleteButton"
+            onClick={() => {this.props.deleteAnItem(this.props.day, this.props.uniqueKey)}}>
+            Delete
+          </button>
         </li>
     )
   }

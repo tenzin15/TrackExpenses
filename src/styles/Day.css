@@ -26,7 +26,7 @@
   height: 2rem;
   border: 0.1rem solid #37BDCA;
   margin: 0.2rem;
-  margin-left: 1rem;
+  margin-left: 0.2rem;
 }
 
 .Monday > #itemAmount {
@@ -34,7 +34,7 @@
   height: 2rem;
   border: 0.1rem solid #37BDCA;
   margin-right: 10rem;
-  margin-left: 1rem;
+  margin-left: 0.2rem;
 }
 
 .Monday > #addButton {

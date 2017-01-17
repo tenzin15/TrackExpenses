@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import '../styles/Day.css';
 
 class Day extends Component {
-  constructor() {
-    super();
-    this.state = {
-      day: null,
-      itemTitle: null,
-      amount: null
-    }
-  }
   render() {
     return (
       <div className={this.props.day}>
@@ -32,7 +24,7 @@ class Day extends Component {
         />
         <button
           id="addButton"
-          onClick={() =>  this.props.createNewItem(this.itemTitleInput.value, this.itemAmountInput.value) }>
+          onClick={() =>  this.props.createNewItem(this.itemTitleInput.value, this.itemAmountInput.value, this.props.day, this.props.date) }>
           Add New Item
         </button>
         <ol>

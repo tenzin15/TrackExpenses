@@ -25,11 +25,16 @@ class App extends Component {
     this.createNewItem = this.createNewItem.bind(this);
   }
 
-  createNewItem(itemTitle, itemAmount) {
-    console.log(itemTitle, itemAmount);
-    let newItem = { title: itemTitle, amount: itemAmount, createdAt: new Date };
+  createNewItem(itemTitle, itemAmount, itemCreationDay, itemCreationDate) {
+    console.log(itemTitle, itemAmount, itemCreationDay, itemCreationDate);
+    let newItem = {
+      title: itemTitle,
+      amount: itemAmount,
+      day: itemCreationDay,
+      date: itemCreationDate,
+      createdAt: new Date };
     axios({
-      url: '/itemsList/item.json',
+      url: '/itemsList/week3/monday/items.json',
       baseURL: 'https://trackexpenses-4bcf1.firebaseio.com/',
       method: "POST",
       data: newItem

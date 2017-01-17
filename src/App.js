@@ -22,6 +22,25 @@ class App extends Component {
       saturdayExpense: {},
       sundayExpense: {}
     }
+    this.createNewItem = this.createNewItem.bind(this);
+  }
+
+  createNewItem(itemTitle, itemAmount) {
+    console.log(itemTitle, itemAmount);
+    let newItem = { title: itemTitle, amount: itemAmount, createdAt: new Date };
+    axios({
+      url: '/itemsList/item.json',
+      baseURL: 'https://trackexpenses-4bcf1.firebaseio.com/',
+      method: "POST",
+      data: newItem
+    }).then((response) => {
+      // let todos = this.state.todos;
+      // let newItemId = response.data.name;
+      // todos[newItemId] = newItem;
+      // this.setState({ todos: todos });
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
   render() {
@@ -29,7 +48,11 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Week week={this.state.week} total={this.state.total} />
-          <Day day={this.state.day[0]} date={this.state.date[0]} />
+          <Day
+            day={this.state.day[0]}
+            date={this.state.date[0]}
+            createNewItem = {this.createNewItem}
+          />
         </div>
       </BrowserRouter>
     );

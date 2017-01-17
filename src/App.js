@@ -17,8 +17,8 @@ class App extends Component {
       total: 0,
       day: ['Monday', 'Tuesday', 'Wednasday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       date: ['01/16/17', '01/17/17', '01/18/17', '01/19/17', '01/20/17', '01/21/17', '01/22/17'],
-      mondayExpense: [],
-      tuesdayExpense: [],
+      mondayExpense: [],  // has list of { itemTitle: '', itemAmount: '', createdAt: '' }
+      tuesdayExpense: [], // same for the rest
       wednasdayExpense: [],
       thursdayExpense: [],
       fridayExpense: [],
@@ -178,13 +178,11 @@ class App extends Component {
         <div className="App">
           <Week week={this.state.week} total={this.state.total} />
           <Day
-            day={this.state.day[6]}
-            date={this.state.date[6]}
+            day={this.state.day[0]}
+            date={this.state.date[0]}
             createNewItem = {this.createNewItem}
+            expenseList = {this.state.mondayExpense}
           />
-          {this.state.mondayExpense.length}
-          {this.state.tuesdayExpense.length}
-          {this.state.sundayExpense.length}
         </div>
       </BrowserRouter>
     );

@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
 import '../styles/Day.css';
+import Expense from './Expense'
 
 class Day extends Component {
   render() {
+    const returnContentWhenDefined = () => {
+      if (this.props.expenseList) {
+        return (
+          this.props.expenseList.reverse().map(oneExpenseObject =>
+              <Expense key={oneExpenseObject.createdAt}
+                     itemTitle={oneExpenseObject.title}
+                     itemAmount={oneExpenseObject.amount}
+                     createdAt={oneExpenseObject.createdAt}
+              />
+          )
+        )
+      }
+    }
     return (
-      <div className={this.props.day}>
+      <div className="Day" id={this.props.day}>
         <header id="day_total_header">
           <h3 id="h3_day_date">{this.props.day} ({this.props.date})</h3>
         </header>
@@ -32,10 +46,10 @@ class Day extends Component {
           }>
           Add New Item
         </button>
-        <ol>
-
-
-        </ol>
+        {/* All the current expenses in the list for a day will render below */}
+        <ul className="Day" id={this.props.day}>
+          {returnContentWhenDefined()}
+        </ul>
       </div>
     );
   }

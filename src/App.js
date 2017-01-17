@@ -26,10 +26,73 @@ class App extends Component {
       sundayExpense: []
     }
     this.createNewItem = this.createNewItem.bind(this);
-    this.updateStateWithCurrentDay = this.updateStateWithCurrentDay.bind(this);
+    this.updateStateWithCurrentDayItem = this.updateStateWithCurrentDayItem.bind(this);
+    this.downloadDailyExpense = this.downloadDailyExpense.bind(this);
   }
 
-  updateStateWithCurrentDay(day, newItem) {
+  componentDidMount() {
+    this.state.day.forEach((day) => {
+      let dayExpense = day[0].toLowerCase() + day.slice(1) + 'Expense';
+      axios({
+        url: `/expenseList/${this.state.weekName}/${day}/expense.json`,
+        baseURL: 'https://trackexpenses-4bcf1.firebaseio.com/',
+        method: "GET",
+      })
+      .then((response) => {
+        this.downloadDailyExpense(day, response);
+      })
+    })
+  }
+
+  downloadDailyExpense(day, response) {
+    if (response.data !== null) {
+      switch(day) {
+           case("Monday"):
+            this.setState({
+              mondayExpense: Object.values(response.data)
+            })
+           break;
+
+           case("Tuesday"):
+            this.setState({
+              tuesdayExpense: Object.values(response.data)
+            })
+           break;
+
+           case("Wednasday"):
+            this.setState({
+              wednasdayExpense: Object.values(response.data)
+            })
+           break;
+
+           case("Thursday"):
+            this.setState({
+              thursdayExpense: Object.values(response.data)
+            })
+           break;
+
+           case("Friday"):
+            this.setState({
+              fridayExpense: Object.values(response.data)
+            })
+           break;
+
+           case("Saturday"):
+            this.setState({
+              saturdayExpense: Object.values(response.data)
+            })
+           break;
+
+           case("Sunday"):
+            this.setState({
+              sundayExpense: Object.values(response.data)
+            })
+           break;
+        }
+    }
+  }
+
+  updateStateWithCurrentDayItem(day, newItem) {
       switch(day) {
          case("Monday"):
           let mondayItems = this.state.mondayExpense;
@@ -40,7 +103,7 @@ class App extends Component {
          break;
 
          case("Tuesday"):
-          let tuesdayItems = this.state.TuesdayExpense;
+          let tuesdayItems = this.state.tuesdayExpense;
           tuesdayItems.push(newItem);
           this.setState({
             tuesdayExpense: tuesdayItems
@@ -100,14 +163,11 @@ class App extends Component {
       baseURL: 'https://trackexpenses-4bcf1.firebaseio.com/',
       method: "POST",
       data: newItem
-    }).then((response) => {
-      // let todos = this.state.todos;
-      // let newItemId = response.data.name;
-      // todos[newItemId] = newItem;
-      // this.setState({ todos: todos });
-      this.updateStateWithCurrentDay(itemCreationDay, newItem);
-
-    }).catch((error) => {
+    })
+    .then((response) => {
+      this.updateStateWithCurrentDayItem(itemCreationDay, newItem);
+    })
+    .catch((error) => {
       console.log(error);
     });
   }
@@ -118,11 +178,13 @@ class App extends Component {
         <div className="App">
           <Week week={this.state.week} total={this.state.total} />
           <Day
-            day={this.state.day[0]}
-            date={this.state.date[0]}
+            day={this.state.day[6]}
+            date={this.state.date[6]}
             createNewItem = {this.createNewItem}
           />
           {this.state.mondayExpense.length}
+          {this.state.tuesdayExpense.length}
+          {this.state.sundayExpense.length}
         </div>
       </BrowserRouter>
     );

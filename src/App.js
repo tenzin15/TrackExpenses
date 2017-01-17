@@ -27,6 +27,7 @@ class App extends Component {
     this.deleteAnItem = this.deleteAnItem.bind(this);
     this.updateStateWithCurrentDayItem = this.updateStateWithCurrentDayItem.bind(this);
     this.downloadDailyExpense = this.downloadDailyExpense.bind(this);
+    this.updateStateAfterDelete = this.updateStateAfterDelete.bind(this);
   }
 
   componentDidMount() {
@@ -45,46 +46,47 @@ class App extends Component {
 
   downloadDailyExpense(day, response) {
     if (response.data !== null) {
+      const data = Object.values(response.data);
       switch(day) {
            case("Monday"):
             this.setState({
-              mondayExpense: Object.values(response.data)
+              mondayExpense: data,
             })
            break;
 
            case("Tuesday"):
             this.setState({
-              tuesdayExpense: Object.values(response.data)
+              tuesdayExpense: data,
             })
            break;
 
            case("Wednasday"):
             this.setState({
-              wednasdayExpense: Object.values(response.data)
+              wednasdayExpense: data,
             })
            break;
 
            case("Thursday"):
             this.setState({
-              thursdayExpense: Object.values(response.data)
+              thursdayExpense: data,
             })
            break;
 
            case("Friday"):
             this.setState({
-              fridayExpense: Object.values(response.data)
+              fridayExpense: data,
             })
            break;
 
            case("Saturday"):
             this.setState({
-              saturdayExpense: Object.values(response.data)
+              saturdayExpense: data,
             })
            break;
 
            case("Sunday"):
             this.setState({
-              sundayExpense: Object.values(response.data)
+              sundayExpense: data,
             })
            break;
         }
@@ -152,36 +154,119 @@ class App extends Component {
   }
 
   createNewItem(itemTitle, itemAmount, itemCreationDay) {
+    const timestamp = Date.now();
     let newItem = {
+      uniqueKey: timestamp,
       title: itemTitle,
       amount: itemAmount,
       createdAt: new Date
     };
     axios({
-      url: `/expenseList/${this.state.weekName}/${itemCreationDay}/expense.json`,
+      url: `/expenseList/${this.state.weekName}/${itemCreationDay}/expense/${timestamp}/.json`,
       baseURL: 'https://trackexpenses-4bcf1.firebaseio.com/',
       method: "POST",
       data: newItem
     })
     .then((response) => {
-      console.log(response.data.name);
-      newItem['uniqueKey'] = response.data.name;
       this.updateStateWithCurrentDayItem(itemCreationDay, newItem);
+      itemTitle = '';
     })
     .catch((error) => {
       console.log(error);
     });
   }
 
+  updateStateAfterDelete(day, listUniqueKey) {
+      let temp = [];
+      switch(day) {
+         case("Monday"):
+           this.state.mondayExpense.forEach((el) => {
+            if (el.uniqueKey !== listUniqueKey) {
+              temp.push(el);
+              }
+            })
+            this.setState({
+              mondayExpense: temp
+            })
+         break;
+
+         case("Tuesday"):
+         this.state.tuesdayExpense.forEach((el) => {
+          if (el.uniqueKey !== listUniqueKey) {
+            temp.push(el);
+            }
+          })
+           this.setState({
+            tuesdayExpense: temp
+          })
+         break;
+
+         case("Wednasday"):
+         this.state.wednasdayExpense.forEach((el) => {
+          if (el.uniqueKey !== listUniqueKey) {
+              temp.push(el);
+            }
+          })
+          this.setState({
+            wednasdayExpense: temp
+          })
+         break;
+
+         case("Thursday"):
+         this.state.thursdayExpense.forEach((el) => {
+          if (el.uniqueKey !== listUniqueKey) {
+            temp.push(el);
+            }
+          })
+          this.setState({
+            thursdayExpense: temp
+          })
+         break;
+
+         case("Friday"):
+         this.state.fridayExpense.forEach((el) => {
+          if (el.uniqueKey !== listUniqueKey) {
+            temp.push(el);
+            }
+          })
+          this.setState({
+            fridayExpense: temp
+          })
+         break;
+
+         case("Saturday"):
+         this.state.saturdayExpense.forEach((el) => {
+          if (el.uniqueKey !== listUniqueKey) {
+            temp.push(el);
+            }
+          })
+          this.setState({
+            saturdayExpense: temp
+          })
+         break;
+
+         case("Sunday"):
+         this.state.sundayExpense.forEach((el) => {
+          if (el.uniqueKey !== listUniqueKey) {
+            temp.push(el);
+            }
+          })
+          this.setState({
+            sundayExpense: temp
+          })
+         break;
+      }
+  }
+
   deleteAnItem(itemCreationDay, listUniqueKey) {
     console.log(itemCreationDay, listUniqueKey);
     axios({
-      url: `/expenseList/${this.state.weekName}/${itemCreationDay}/expense/${listUniqueKey}.json`,
+      url: `/expenseList/${this.state.weekName}/${itemCreationDay}/expense/${listUniqueKey}/.json`,
       baseURL: 'https://trackexpenses-4bcf1.firebaseio.com/',
       method: "DELETE"
     })
     .then((response) => {
-      console.log(response);
+      this.updateStateAfterDelete(itemCreationDay, listUniqueKey);
     })
   }
 

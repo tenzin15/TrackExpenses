@@ -9,9 +9,6 @@ class Expense extends React.Component {
           <span className="wrapInOneLi" id="wrapInOneLi1">$ {this.props.itemAmount}</span>
           <span className="wrapInOneLi" id="wrapInOneLi2">{this.props.createdAt}</span>
           <button className="editButton">Edit</button>
-          <div>
-            {this.props.uniqueKey}
-          </div>
           {}
           <button
             className="deleteButton"

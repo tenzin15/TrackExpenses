@@ -24,7 +24,12 @@ class Day extends Component {
         />
         <button
           id="addButton"
-          onClick={() =>  this.props.createNewItem(this.itemTitleInput.value, this.itemAmountInput.value, this.props.day, this.props.date) }>
+          onClick={() =>
+            this.props.createNewItem(this.itemTitleInput.value,
+              this.itemAmountInput.value,
+              this.props.day,
+              this.props.date)
+          }>
           Add New Item
         </button>
         <ol>

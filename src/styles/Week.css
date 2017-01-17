@@ -1,0 +1,24 @@
+.Week {
+  height: 3.7rem;
+  width: 100%;
+  background-color: lightgrey;
+}
+
+#week_total_header {
+  width: 100%;
+  float: left;
+  background-color: orange;
+}
+
+#h3_week {
+  position: relative;
+  float: left;
+  padding-left: 1rem;
+}
+
+#h3_total {
+  position: relative;
+  float: right;
+  padding-right: 1rem;
+}
+

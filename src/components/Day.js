@@ -12,8 +12,8 @@ class Day extends Component {
         <ol>
           <li>
             Gas
-            <button id="deleteButton">Delete</button>
             <button id="editButton">Edit</button>
+            <button id="deleteButton">Delete</button>
           </li>
         </ol>
       </div>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Match, Miss } from 'react-router';
 import './styles/App.css';
 import Day from './components/Day';
 import Week from './components/Week';
+import Login from './components/Login';
 
 class App extends Component {
   constructor() {
@@ -15,11 +17,13 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <Week week={this.state.week} total={this.state.total} />
-        <Day day={this.state.day[0]} date={this.state.date[0]} />
-        <Day day={this.state.day[1]} date={this.state.date[1]} />
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Week week={this.state.week} total={this.state.total} />
+          <Day day={this.state.day[0]} date={this.state.date[0]} />
+          <Day day={this.state.day[1]} date={this.state.date[1]} />
+        </div>
+      </BrowserRouter>
     );
   }
 }

@@ -7,14 +7,40 @@ li {
   padding: 0.5rem;
 }
 
-.editButton, .deleteButton {
+.Monday, .Tuesday, .Wednasday, .Thursday, .Friday, .Saturday, .Sunday {
   float: right;
   border: 0.1rem solid blue;
-  background-color: #37BDCA;
+  background-color: lightblue;
   margin: 0.3rem;
   height: 1.5rem;
 }
 
-.editButton {
-  margin-right: 1rem;
+.Tuesday {
+  border: 0.1rem solid hotpink;
+  background-color: #F9D7DC;
+}
+
+.Wednasday {
+  border: 0.1rem solid green;
+  background-color: #DDF5DD;
+}
+
+.Thursday {
+  border: 0.1rem solid gray;
+  background-color: #F7F3F3;
+}
+
+.Friday {
+  border: 0.1rem solid #FCAA07;
+  background-color: #F7E6C4;
+}
+
+.Saturday {
+  border: 0.1rem solid #871BF0;
+  background-color: #DCC5F2;
+}
+
+.Sunday {
+  border: 0.1rem solid #F7512C;
+  background-color: #F6C9BF;
 }

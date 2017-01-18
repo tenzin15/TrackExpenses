@@ -558,6 +558,66 @@ class App extends Component {
             addEditButtonText = {this.state.addEditButtonTextTuesday}
             dailyTotal = {this.state.dailyTotal[1]}
           />
+          <Day
+            day={this.state.day[2]}
+            date={this.state.date[2]}
+            createNewItem = {this.createNewItem}
+            expenseList = {this.state.wednasdayExpense}
+            deleteAnItem = {this.deleteAnItem}
+            editExpenseItem = {this.editExpenseItem}
+            placeholderForItemTitle = {this.state.placeholderForItemTitleWednasday}
+            placeholderForItemAmount = {this.state.placeholderForItemAmountWednasday}
+            addEditButtonText = {this.state.addEditButtonTextWednasday}
+            dailyTotal = {this.state.dailyTotal[2]}
+          />
+          <Day
+            day={this.state.day[3]}
+            date={this.state.date[3]}
+            createNewItem = {this.createNewItem}
+            expenseList = {this.state.thursdayExpense}
+            deleteAnItem = {this.deleteAnItem}
+            editExpenseItem = {this.editExpenseItem}
+            placeholderForItemTitle = {this.state.placeholderForItemTitleThursday}
+            placeholderForItemAmount = {this.state.placeholderForItemAmountThursday}
+            addEditButtonText = {this.state.addEditButtonTextThursday}
+            dailyTotal = {this.state.dailyTotal[3]}
+          />
+          <Day
+            day={this.state.day[4]}
+            date={this.state.date[4]}
+            createNewItem = {this.createNewItem}
+            expenseList = {this.state.fridayExpense}
+            deleteAnItem = {this.deleteAnItem}
+            editExpenseItem = {this.editExpenseItem}
+            placeholderForItemTitle = {this.state.placeholderForItemTitleFriday}
+            placeholderForItemAmount = {this.state.placeholderForItemAmountFriday}
+            addEditButtonText = {this.state.addEditButtonTextFriday}
+            dailyTotal = {this.state.dailyTotal[4]}
+          />
+          <Day
+            day={this.state.day[5]}
+            date={this.state.date[5]}
+            createNewItem = {this.createNewItem}
+            expenseList = {this.state.saturdayExpense}
+            deleteAnItem = {this.deleteAnItem}
+            editExpenseItem = {this.editExpenseItem}
+            placeholderForItemTitle = {this.state.placeholderForItemTitleSaturday}
+            placeholderForItemAmount = {this.state.placeholderForItemAmountSaturday}
+            addEditButtonText = {this.state.addEditButtonTextSaturday}
+            dailyTotal = {this.state.dailyTotal[5]}
+          />
+          <Day
+            day={this.state.day[6]}
+            date={this.state.date[6]}
+            createNewItem = {this.createNewItem}
+            expenseList = {this.state.sundayExpense}
+            deleteAnItem = {this.deleteAnItem}
+            editExpenseItem = {this.editExpenseItem}
+            placeholderForItemTitle = {this.state.placeholderForItemTitleSunday}
+            placeholderForItemAmount = {this.state.placeholderForItemAmountSunday}
+            addEditButtonText = {this.state.addEditButtonTextSunday}
+            dailyTotal = {this.state.dailyTotal[6]}
+          />
         </div>
     );
   }

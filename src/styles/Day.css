@@ -51,4 +51,220 @@
   font-size: 1.2rem;
 }
 
+.Day > ul {
+  height: 5.5rem;
+  overflow: scroll;
+  background-color: #37BDCA;
+  margin: 0;
+}
+
+
+
+#Tuesday {
+  background-color: #F9D7DC;
+  margin: 0;
+  margin-top: 5.5rem;
+}
+
+#Tuesday > ul {
+  margin-top: 0;
+  background-color: lightpink;
+}
+
+#Tuesday > #day_total_header {
+  background-color: lightpink;
+}
+
+#Tuesday > header {
+  background-color: lightpink;
+}
+
+#Tuesday > #addButton {
+  background-color: lightpink;
+  border: 0.1rem solid hotpink;
+}
+
+#Tuesday > #itemAmount {
+  border-color: hotpink;
+}
+
+#Tuesday > #itemTitle {
+  border-color: hotpink;
+}
+
+
+
+
+#Wednasday {
+  background-color: #DDF5DD;
+  margin: 0;
+  margin-top: 5.5rem;
+}
+
+#Wednasday > ul {
+  margin-top: 0;
+  background-color: lightgreen;
+}
+
+#Wednasday > #day_total_header {
+  background-color: lightgreen;
+}
+
+#Wednasday > header {
+  background-color: lightgreen;
+}
+
+#Wednasday > #addButton {
+  background-color: lightgreen;
+  border: 0.1rem solid green;
+}
+
+#Wednasday > #itemAmount {
+  border-color: green;
+}
+
+#Wednasday > #itemTitle {
+  border-color: green;
+}
+
+
+
+
+#Thursday {
+  background-color: #F7F3F3;
+  margin: 0;
+  margin-top: 5.5rem;
+}
+
+#Thursday > ul {
+  margin-top: 0;
+  background-color: lightgrey;
+}
+
+#Thursday > #day_total_header {
+  background-color: lightgrey;
+}
+
+#Thursday > header {
+  background-color: lightgrey;
+}
+
+#Thursday > #addButton {
+  background-color: lightgrey;
+  border: 0.1rem solid gray;
+}
+
+#Thursday > #itemAmount {
+  border-color: gray;
+}
+
+#Thursday > #itemTitle {
+  border-color: gray;
+}
+
+
+
+
+#Friday {
+  background-color: #F7E6C4;
+  margin: 0;
+  margin-top: 5.5rem;
+}
+
+#Friday > ul {
+  margin-top: 0;
+  background-color: #F5C667;
+}
+
+#Friday > #day_total_header {
+  background-color: #F5C667;
+}
+
+#Friday > header {
+  background-color: #F5C667;
+}
+
+#Friday > #addButton {
+  background-color: #F5C667;
+  border: 0.1rem solid #FCAA07;
+}
+
+#Friday > #itemAmount {
+  border-color: #FCAA07;
+}
+
+#Friday > #itemTitle {
+  border-color: #FCAA07;
+}
+
+
+
+#Saturday {
+  background-color: #DCC5F2;
+  margin: 0;
+  margin-top: 5.5rem;
+}
+
+#Saturday > ul {
+  margin-top: 0;
+  background-color: #D1ABF6;
+}
+
+#Saturday > #day_total_header {
+  background-color: #D1ABF6;
+}
+
+#Saturday > header {
+  background-color: #D1ABF6;
+}
+
+#Saturday > #addButton {
+  background-color: #D1ABF6;
+  border: 0.1rem solid #871BF0;
+}
+
+#Saturday > #itemAmount {
+  border-color: #871BF0;
+}
+
+#Saturday > #itemTitle {
+  border-color: #871BF0;
+}
+
+
+
+
+#Sunday {
+  background-color: #F6C9BF;
+  margin: 0;
+  margin-top: 5.5rem;
+}
+
+#Sunday > ul {
+  margin-top: 0;
+  background-color: #F08E79;
+}
+
+#Sunday > #day_total_header {
+  background-color: #F08E79;
+}
+
+#Sunday > header {
+  background-color: #F08E79;
+}
+
+#Sunday > #addButton {
+  background-color: #F08E79;
+  border: 0.1rem solid #F7512C;
+}
+
+#Sunday > #itemAmount {
+  border-color: #F7512C;
+}
+
+#Sunday > #itemTitle {
+  border-color: #F7512C;
+}
+
+
 

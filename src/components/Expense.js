@@ -9,7 +9,7 @@ class Expense extends React.Component {
           <span className="wrapInOneLi" id="wrapInOneLi1">$ {this.props.itemAmount}</span>
           <span className="wrapInOneLi" id="wrapInOneLi2">@ {this.props.createdAt}</span>
           <button
-            className="editButton"
+            className={this.props.day}
             onClick={() => {
                             this.props.editExpenseItem(
                               this.props.day,
@@ -24,7 +24,7 @@ class Expense extends React.Component {
             Edit
           </button>
           <button
-            className="deleteButton"
+            className={this.props.day}
             onClick={() => {this.props.deleteAnItem(this.props.day, this.props.uniqueKey)}}>
             Delete
           </button>

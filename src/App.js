@@ -54,7 +54,6 @@ class App extends Component {
       const data = [];
       Object.values(response.data).map((key) => {
         data.push(Object.values(key)[0]);
-        // dailyTotal.push(parseFloat(Object.values(key)[0].amount));
       })
       let dailyTotal = this.state.dailyTotal;
       let total = 0;    // will store the total amount for each day from the firebase
@@ -211,6 +210,16 @@ class App extends Component {
           })
          break;
       }
+
+        // here all down with daily amount update
+        // now update weekly amount
+        let weeklyTotal = 0;
+        this.state.dailyTotal.forEach((el) => {
+          weeklyTotal += el;
+        })
+        this.setState({
+          weeklyTotal: weeklyTotal
+        })
   }
 
   createNewItem(itemTitle, itemAmount, itemCreationDay) {
@@ -234,8 +243,6 @@ class App extends Component {
     })
     .then((response) => {
       this.updateStateWithCurrentDayItem(itemCreationDay, newItem);
-      // itemTitle = '';
-
     })
     .catch((error) => {
       console.log(error);

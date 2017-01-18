@@ -13,7 +13,7 @@ class Day extends Component {
                      uniqueKey={oneExpenseObject.uniqueKey}
                      itemTitle={oneExpenseObject.title}
                      itemAmount={oneExpenseObject.amount}
-                     createdAt={moment(oneExpenseObject.createdAt).format('LT')}
+                     createdAt={moment(oneExpenseObject.createdAt).format('lll')}
                      deleteAnItem={this.props.deleteAnItem}
                      day={this.props.day}
                      editExpenseItem={this.props.editExpenseItem}

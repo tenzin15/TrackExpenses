@@ -15,7 +15,7 @@ class App extends Component {
       total: 0,
       day: ['Monday', 'Tuesday', 'Wednasday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       date: ['01/16/17', '01/17/17', '01/18/17', '01/19/17', '01/20/17', '01/21/17', '01/22/17'],
-      mondayExpense: [],  // has list of { itemTitle: '', itemAmount: '', createdAt: '' }
+      mondayExpense: [],  // has list of { itemTitle: '', itemAmount: '', createdAt: '', unqiueKey: '' }
       tuesdayExpense: [], // same for the rest
       wednasdayExpense: [],
       thursdayExpense: [],
@@ -46,7 +46,12 @@ class App extends Component {
 
   downloadDailyExpense(day, response) {
     if (response.data !== null) {
-      const data = Object.values(response.data);
+
+      const data = [];
+      Object.values(response.data).map((key) => {
+        data.push(Object.values(key)[0]);
+      })
+
       switch(day) {
            case("Monday"):
             this.setState({
@@ -259,7 +264,6 @@ class App extends Component {
   }
 
   deleteAnItem(itemCreationDay, listUniqueKey) {
-    console.log(itemCreationDay, listUniqueKey);
     axios({
       url: `/expenseList/${this.state.weekName}/${itemCreationDay}/expense/${listUniqueKey}/.json`,
       baseURL: 'https://trackexpenses-4bcf1.firebaseio.com/',

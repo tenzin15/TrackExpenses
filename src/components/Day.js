@@ -16,6 +16,7 @@ class Day extends Component {
                      createdAt={moment(oneExpenseObject.createdAt).format('LT')}
                      deleteAnItem={this.props.deleteAnItem}
                      day={this.props.day}
+                     editExpenseItem={this.props.editExpenseItem}
               />
           )
         )
@@ -31,14 +32,16 @@ class Day extends Component {
         <input
           id="itemTitle"
           type="text"
-          placeholder=" What did you spend your money on?"
+          placeholder={this.props.placeholderForItemTitle}
+          value={this.props.editItemTitle}
           ref={(input) => { this.itemTitleInput = input; }}
         />
         <span id="itemAmountLabel"> Item Amount: $</span>
         <input
           id="itemAmount"
           type="number"
-          placeholder=" How much you spend?"
+          placeholder={this.props.placeholderForItemAmount}
+          value={this.props.editItemAmount}
           ref={(input) => { this.itemAmountInput = input; }}
         />
         <button

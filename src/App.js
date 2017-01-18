@@ -21,13 +21,18 @@ class App extends Component {
       thursdayExpense: [],
       fridayExpense: [],
       saturdayExpense: [],
-      sundayExpense: []
+      sundayExpense: [],
+      editItemTitle: '',
+      editItemAmount: '',
+      placeholderForItemTitle: ' What did you spend your money on?',
+      placeholderForItemAmount: ' How much you spend?'
     }
     this.createNewItem = this.createNewItem.bind(this);
     this.deleteAnItem = this.deleteAnItem.bind(this);
     this.updateStateWithCurrentDayItem = this.updateStateWithCurrentDayItem.bind(this);
     this.downloadDailyExpense = this.downloadDailyExpense.bind(this);
     this.updateStateAfterDelete = this.updateStateAfterDelete.bind(this);
+    this.editExpenseItem = this.editExpenseItem.bind(this);
   }
 
   componentDidMount() {
@@ -274,6 +279,10 @@ class App extends Component {
     })
   }
 
+  editExpenseItem(itemCreationDay, listUniqueKey, title, amount, createdAt) {
+    console.log(itemCreationDay, listUniqueKey, title, amount, createdAt);
+  }
+
   render() {
     return (
         <div className="App">
@@ -284,6 +293,11 @@ class App extends Component {
             createNewItem = {this.createNewItem}
             expenseList = {this.state.mondayExpense}
             deleteAnItem = {this.deleteAnItem}
+            editExpenseItem = {this.editExpenseItem}
+            editItemTitle = {this.state.editItemTitle}
+            editItemAmount = {this.state.editItemAmount}
+            placeholderForItemTitle = {this.state.placeholderForItemTitle}
+            placeholderForItemAmount = {this.state.placeholderForItemAmount}
           />
         </div>
     );

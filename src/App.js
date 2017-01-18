@@ -24,7 +24,8 @@ class App extends Component {
       sundayExpense: [],
       placeholderForItemTitle: ' What did you spend your money on?',
       placeholderForItemAmount: ' How much you spend?',
-      addEditButtonText: 'Add New Item'
+      addEditButtonText: 'Add New Item',
+      dailyTotal: [0, 0, 0, 0, 0, 0, 0]       // daily total for 7 days of the week
     }
     this.createNewItem = this.createNewItem.bind(this);
     this.deleteAnItem = this.deleteAnItem.bind(this);
@@ -107,7 +108,8 @@ class App extends Component {
           let mondayItems = this.state.mondayExpense;
           mondayItems.push(newItem);
           this.setState({
-            mondayExpense: mondayItems
+            mondayExpense: mondayItems,
+
           })
          break;
 
@@ -182,7 +184,8 @@ class App extends Component {
     })
     .then((response) => {
       this.updateStateWithCurrentDayItem(itemCreationDay, newItem);
-      itemTitle = '';
+      // itemTitle = '';
+
     })
     .catch((error) => {
       console.log(error);
@@ -305,6 +308,7 @@ class App extends Component {
             placeholderForItemTitle = {this.state.placeholderForItemTitle}
             placeholderForItemAmount = {this.state.placeholderForItemAmount}
             addEditButtonText = {this.state.addEditButtonText}
+            dailyTotal = {this.state.dailyTotal[0]}
           />
         </div>
     );

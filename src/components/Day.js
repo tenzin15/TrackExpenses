@@ -26,6 +26,7 @@ class Day extends Component {
     return (
       <div className="Day" id={this.props.day}>
         <header id="day_total_header">
+          <span id="daily_total">Total: ${this.props.dailyTotal}</span>
           <h3 id="h3_day_date">{this.props.day} ({this.props.date})</h3>
         </header>
         <span id="itemNameLabel"> Item Name: </span>

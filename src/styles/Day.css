@@ -45,13 +45,10 @@
 .Day > #itemAmountLabel {
   margin-left: 5rem;
 }
-/*
-.Day > #h3_day_date {
-  float: left;
-}
-*/
+
 .Day > header > #daily_total {
   float: left;
   font-size: 1.2rem;
 }
+
 

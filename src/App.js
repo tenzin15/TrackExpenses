@@ -22,9 +22,38 @@ class App extends Component {
       fridayExpense: [],
       saturdayExpense: [],
       sundayExpense: [],
+
       placeholderForItemTitle: ' What did you spend your money on?',
       placeholderForItemAmount: ' How much you spend?',
       addEditButtonText: 'Add New Item',
+
+      placeholderForItemTitleMonday: null,
+      placeholderForItemAmountMonday: null,
+      addEditButtonTextMonday: 'Add New Item',
+
+      placeholderForItemTitleTuesday: null,
+      placeholderForItemAmountTuesday: null,
+      addEditButtonTextTuesday: 'Add New Item',
+
+      placeholderForItemTitleWednasday: null,
+      placeholderForItemAmountWednasday: null,
+      addEditButtonTextWednasday: 'Add New Item',
+
+      placeholderForItemTitleThursday: null,
+      placeholderForItemAmountThursday: null,
+      addEditButtonTextThursday: 'Add New Item',
+
+      placeholderForItemTitleFriday: null,
+      placeholderForItemAmountFriday: null,
+      addEditButtonTextFriday: 'Add New Item',
+
+      placeholderForItemTitleSaturday: null,
+      placeholderForItemAmountSaturday: null,
+      addEditButtonTextSaturday: 'Add New Item',
+
+      placeholderForItemTitleSunday: null,
+      placeholderForItemAmountSunday: null,
+      addEditButtonTextSunday: 'Add New Item',
       dailyTotal: [0, 0, 0, 0, 0, 0, 0]       // daily total for 7 days of the week
     }
     this.createNewItem = this.createNewItem.bind(this);
@@ -223,11 +252,64 @@ class App extends Component {
   }
 
   createNewItem(itemTitle, itemAmount, itemCreationDay) {
-    this.setState({
-      addEditButtonText: 'Add New Item',
-      placeholderForItemTitle: ' What did you spend your money on?',
-      placeholderForItemAmount: ' How much you spend?'
-    })
+    switch(itemCreationDay) {
+           case("Monday"):
+           this.setState({
+              placeholderForItemTitleMonday: ' Add New Item',
+              placeholderForItemAmountMonday: ' How much you spend?',
+              addEditButtonTextMonday: 'Add New Item'
+            })
+           break;
+
+           case("Tuesday"):
+           this.setState({
+              placeholderForItemTitleTuesday: ' Add New Item',
+              placeholderForItemAmountTuesday: ' How much you spend?',
+              addEditButtonTextTuesday: 'Add New Item'
+            })
+           break;
+
+           case("Wednasday"):
+           this.setState({
+              placeholderForItemTitleWednasday: ' Add New Item',
+              placeholderForItemAmountWednasday: ' How much you spend?',
+              addEditButtonTextWednasday: 'Add New Item'
+            })
+           break;
+
+           case("Thursday"):
+           this.setState({
+              placeholderForItemTitleThursday: ' Add New Item',
+              placeholderForItemAmountThursday: ' How much you spend?',
+              addEditButtonTextThursday: 'Add New Item'
+            })
+           break;
+
+           case("Friday"):
+           this.setState({
+              placeholderForItemTitleFriday: ' Add New Item',
+              placeholderForItemAmountFriday: ' How much you spend?',
+              addEditButtonTextFriday: 'Add New Item'
+            })
+           break;
+
+           case("Saturday"):
+           this.setState({
+              placeholderForItemTitleSaturday: ' Add New Item',
+              placeholderForItemAmountSaturday: ' How much you spend?',
+              addEditButtonTextSaturday: 'Add New Item'
+            })
+           break;
+
+           case("Sunday"):
+           this.setState({
+              placeholderForItemTitleSunday: ' Add New Item',
+              placeholderForItemAmountSunday: ' How much you spend?',
+              addEditButtonTextSunday: 'Add New Item'
+            })
+           break;
+    }
+
     const timestamp = Date.now();
     let newItem = {
       uniqueKey: timestamp,
@@ -388,11 +470,64 @@ class App extends Component {
 
   editExpenseItem(itemCreationDay, listUniqueKey, title, amount) {
     this.deleteAnItem(itemCreationDay, listUniqueKey);
-    this.setState({
-      placeholderForItemTitle: title,
-      placeholderForItemAmount: amount,
-      addEditButtonText: 'Finish Editing'
-    })
+        switch(itemCreationDay) {
+           case("Monday"):
+           this.setState({
+              placeholderForItemTitleMonday: title,
+              placeholderForItemAmountMonday: amount,
+              addEditButtonTextMonday: 'Finish Editing'
+            })
+           break;
+
+           case("Tuesday"):
+           this.setState({
+              placeholderForItemTitleTuesday: title,
+              placeholderForItemAmountTuesday: amount,
+              addEditButtonTextTuesday: 'Finish Editing'
+            })
+           break;
+
+           case("Wednasday"):
+           this.setState({
+              placeholderForItemTitleWednasday: title,
+              placeholderForItemAmountWednasday: amount,
+              addEditButtonTextWednasday: 'Finish Editing'
+            })
+           break;
+
+           case("Thursday"):
+           this.setState({
+              placeholderForItemTitleThursday: title,
+              placeholderForItemAmountThursday: amount,
+              addEditButtonTextThursday: 'Finish Editing'
+            })
+           break;
+
+           case("Friday"):
+           this.setState({
+              placeholderForItemTitleFriday: title,
+              placeholderForItemAmountFriday: amount,
+              addEditButtonTextFriday: 'Finish Editing'
+            })
+           break;
+
+           case("Saturday"):
+           this.setState({
+              placeholderForItemTitleSaturday: title,
+              placeholderForItemAmountSaturday: amount,
+              addEditButtonTextSaturday: 'Finish Editing'
+            })
+           break;
+
+           case("Sunday"):
+           this.setState({
+              placeholderForItemTitleSunday: title,
+              placeholderForItemAmountSunday: amount,
+              addEditButtonTextSunday: 'Finish Editing'
+            })
+           break;
+        }
+
   }
 
   render() {
@@ -406,22 +541,22 @@ class App extends Component {
             expenseList = {this.state.mondayExpense}
             deleteAnItem = {this.deleteAnItem}
             editExpenseItem = {this.editExpenseItem}
-            placeholderForItemTitle = {this.state.placeholderForItemTitle}
-            placeholderForItemAmount = {this.state.placeholderForItemAmount}
-            addEditButtonText = {this.state.addEditButtonText}
+            placeholderForItemTitle = {this.state.placeholderForItemTitleMonday}
+            placeholderForItemAmount = {this.state.placeholderForItemAmountMonday}
+            addEditButtonText = {this.state.addEditButtonTextMonday}
             dailyTotal = {this.state.dailyTotal[0]}
           />
           <Day
-            day={this.state.day[6]}
-            date={this.state.date[6]}
+            day={this.state.day[1]}
+            date={this.state.date[1]}
             createNewItem = {this.createNewItem}
-            expenseList = {this.state.sundayExpense}
+            expenseList = {this.state.tuesdayExpense}
             deleteAnItem = {this.deleteAnItem}
             editExpenseItem = {this.editExpenseItem}
-            placeholderForItemTitle = {this.state.placeholderForItemTitle}
-            placeholderForItemAmount = {this.state.placeholderForItemAmount}
-            addEditButtonText = {this.state.addEditButtonText}
-            dailyTotal = {this.state.dailyTotal[6]}
+            placeholderForItemTitle = {this.state.placeholderForItemTitleTuesday}
+            placeholderForItemAmount = {this.state.placeholderForItemAmountTuesday}
+            addEditButtonText = {this.state.addEditButtonTextTuesday}
+            dailyTotal = {this.state.dailyTotal[1]}
           />
         </div>
     );

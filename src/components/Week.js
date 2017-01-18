@@ -7,7 +7,7 @@ class Week extends Component {
       <div className="Week">
         <header id="week_total_header">
           <h3 id="h3_week">Week: {this.props.week}</h3>
-          <h3 id="h3_total">TOTAL: ${this.props.total}</h3>
+          <h3 id="h3_total">Total For Week: ${this.props.weeklyTotal}</h3>
         </header>
       </div>
     );

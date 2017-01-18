@@ -12,7 +12,7 @@ class App extends Component {
       // later, i can edit to keep adding new week as time goes on
       week: '01/16/17 - 01/22/17',
       weekName: '2017_week3',        // this week is third week of the 2017
-      total: 0,
+      weeklyTotal: 0,
       day: ['Monday', 'Tuesday', 'Wednasday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       date: ['01/16/17', '01/17/17', '01/18/17', '01/19/17', '01/20/17', '01/21/17', '01/22/17'],
       mondayExpense: [],  // has list of { itemTitle: '', amount: '', createdAt: '', unqiueKey: '' }
@@ -67,7 +67,7 @@ class App extends Component {
             dailyTotal[0] = total;
             this.setState({
               mondayExpense: data,
-              dailyTotal: dailyTotal
+              dailyTotal: dailyTotal,
             })
            break;
 
@@ -119,6 +119,16 @@ class App extends Component {
             })
            break;
         }
+
+        // here all down with daily amount update
+        // now update weekly amount
+        let weeklyTotal = 0;
+        this.state.dailyTotal.forEach((el) => {
+          weeklyTotal += el;
+        })
+        this.setState({
+          weeklyTotal: weeklyTotal
+        })
     }
   }
 
@@ -337,7 +347,7 @@ class App extends Component {
   render() {
     return (
         <div className="App">
-          <Week week={this.state.week} total={this.state.total} />
+          <Week week={this.state.week} weeklyTotal={this.state.weeklyTotal} />
           <Day
             day={this.state.day[0]}
             date={this.state.date[0]}

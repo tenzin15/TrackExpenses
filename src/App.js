@@ -96,6 +96,8 @@ class App extends Component {
             this.setState({
               mondayExpense: data,
               dailyTotal: dailyTotal,
+              placeholderForItemTitleMonday: this.state.placeholderForItemTitle,
+              placeholderForItemAmountMonday: this.state.placeholderForItemAmount
             })
            break;
 
@@ -103,7 +105,9 @@ class App extends Component {
             dailyTotal[1] = total;
             this.setState({
               tuesdayExpense: data,
-              dailyTotal: dailyTotal
+              dailyTotal: dailyTotal,
+              placeholderForItemTitleTuesday: this.state.placeholderForItemTitle,
+              placeholderForItemAmountTuesday: this.state.placeholderForItemAmount
             })
            break;
 
@@ -111,7 +115,9 @@ class App extends Component {
             dailyTotal[2] = total;
             this.setState({
               wednasdayExpense: data,
-              dailyTotal: dailyTotal
+              dailyTotal: dailyTotal,
+              placeholderForItemTitleWednasday: this.state.placeholderForItemTitle,
+              placeholderForItemAmountWednasday: this.state.placeholderForItemAmount
             })
            break;
 
@@ -119,7 +125,9 @@ class App extends Component {
             dailyTotal[3] = total;
             this.setState({
               thursdayExpense: data,
-              dailyTotal: dailyTotal
+              dailyTotal: dailyTotal,
+              placeholderForItemTitleThursday: this.state.placeholderForItemTitle,
+              placeholderForItemAmountThursday: this.state.placeholderForItemAmount
             })
            break;
 
@@ -127,7 +135,9 @@ class App extends Component {
             dailyTotal[4] = total;
             this.setState({
               fridayExpense: data,
-              dailyTotal: dailyTotal
+              dailyTotal: dailyTotal,
+              placeholderForItemTitleFriday: this.state.placeholderForItemTitle,
+              placeholderForItemAmountFriday: this.state.placeholderForItemAmount
             })
            break;
 
@@ -135,7 +145,9 @@ class App extends Component {
             dailyTotal[5] = total;
             this.setState({
               saturdayExpense: data,
-              dailyTotal: dailyTotal
+              dailyTotal: dailyTotal,
+              placeholderForItemTitleSaturday: this.state.placeholderForItemTitle,
+              placeholderForItemAmountSaturday: this.state.placeholderForItemAmount
             })
            break;
 
@@ -143,7 +155,9 @@ class App extends Component {
             dailyTotal[6] = total;
             this.setState({
               sundayExpense: data,
-              dailyTotal: dailyTotal
+              dailyTotal: dailyTotal,
+              placeholderForItemTitleSunday: this.state.placeholderForItemTitle,
+              placeholderForItemAmountSunday: this.state.placeholderForItemAmount
             })
            break;
         }

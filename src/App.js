@@ -251,16 +251,26 @@ class App extends Component {
 
   updateStateAfterDelete(day, listUniqueKey) {
       let temp = [];
+      let dailyTotal = this.state.dailyTotal;
+      // if the listUniqueKey is found then delete that
+      // item from the daily state of the corresponding
+      // day of the week
+      // esle decrement that item's amount from the state
+      // of the day in dailyTotal['correspoding day']
       switch(day) {
          case("Monday"):
            this.state.mondayExpense.forEach((el) => {
             if (el.uniqueKey !== listUniqueKey) {
               temp.push(el);
-              }
-            })
-            this.setState({
-              mondayExpense: temp
-            })
+            }
+            else {
+              dailyTotal[0] -= el.amount;
+            }
+           })
+          this.setState({
+            mondayExpense: temp,
+            dailyTotal: dailyTotal
+          })
          break;
 
          case("Tuesday"):
@@ -268,9 +278,13 @@ class App extends Component {
           if (el.uniqueKey !== listUniqueKey) {
             temp.push(el);
             }
+          else {
+              dailyTotal[1] -= el.amount;
+            }
           })
            this.setState({
-            tuesdayExpense: temp
+            tuesdayExpense: temp,
+            dailyTotal: dailyTotal
           })
          break;
 
@@ -279,9 +293,13 @@ class App extends Component {
           if (el.uniqueKey !== listUniqueKey) {
               temp.push(el);
             }
+          else {
+              dailyTotal[2] -= el.amount;
+            }
           })
           this.setState({
-            wednasdayExpense: temp
+            wednasdayExpense: temp,
+            dailyTotal: dailyTotal
           })
          break;
 
@@ -290,9 +308,13 @@ class App extends Component {
           if (el.uniqueKey !== listUniqueKey) {
             temp.push(el);
             }
+          else {
+              dailyTotal[3] -= el.amount;
+            }
           })
           this.setState({
-            thursdayExpense: temp
+            thursdayExpense: temp,
+            dailyTotal: dailyTotal
           })
          break;
 
@@ -301,9 +323,13 @@ class App extends Component {
           if (el.uniqueKey !== listUniqueKey) {
             temp.push(el);
             }
+          else {
+              dailyTotal[4] -= el.amount;
+            }
           })
           this.setState({
-            fridayExpense: temp
+            fridayExpense: temp,
+            dailyTotal: dailyTotal
           })
          break;
 
@@ -312,9 +338,13 @@ class App extends Component {
           if (el.uniqueKey !== listUniqueKey) {
             temp.push(el);
             }
+          else {
+              dailyTotal[5] -= el.amount;
+            }
           })
           this.setState({
-            saturdayExpense: temp
+            saturdayExpense: temp,
+            dailyTotal: dailyTotal
           })
          break;
 
@@ -323,12 +353,26 @@ class App extends Component {
           if (el.uniqueKey !== listUniqueKey) {
             temp.push(el);
             }
+          else {
+              dailyTotal[6] -= el.amount;
+            }
           })
           this.setState({
-            sundayExpense: temp
+            sundayExpense: temp,
+            dailyTotal: dailyTotal
           })
          break;
       }
+
+        // here all down with daily amount update
+        // now update weekly amount
+        let weeklyTotal = 0;
+        this.state.dailyTotal.forEach((el) => {
+          weeklyTotal += el;
+        })
+        this.setState({
+          weeklyTotal: weeklyTotal
+        })
   }
 
   deleteAnItem(itemCreationDay, listUniqueKey) {

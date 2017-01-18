@@ -33,7 +33,6 @@ class Day extends Component {
           id="itemTitle"
           type="text"
           placeholder={this.props.placeholderForItemTitle}
-          value={this.props.editItemTitle}
           ref={(input) => { this.itemTitleInput = input; }}
         />
         <span id="itemAmountLabel"> Item Amount: $</span>
@@ -41,7 +40,6 @@ class Day extends Component {
           id="itemAmount"
           type="number"
           placeholder={this.props.placeholderForItemAmount}
-          value={this.props.editItemAmount}
           ref={(input) => { this.itemAmountInput = input; }}
         />
         <button
@@ -52,10 +50,12 @@ class Day extends Component {
               this.itemTitleInput.value,
               this.itemAmountInput.value,
               this.props.day,
-              this.props.date
+              this.props.date,
+              this.itemTitleInput.value = '',
+              this.itemAmountInput.value = ''
             )
           }>
-          Add New Item
+          {this.props.addEditButtonText}
         </button>
         {/* All the current expenses in the list for a day will render below */}
         <ul id={this.props.day}>

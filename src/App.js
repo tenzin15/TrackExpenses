@@ -22,10 +22,9 @@ class App extends Component {
       fridayExpense: [],
       saturdayExpense: [],
       sundayExpense: [],
-      editItemTitle: '',
-      editItemAmount: '',
       placeholderForItemTitle: ' What did you spend your money on?',
-      placeholderForItemAmount: ' How much you spend?'
+      placeholderForItemAmount: ' How much you spend?',
+      addEditButtonText: 'Add New Item'
     }
     this.createNewItem = this.createNewItem.bind(this);
     this.deleteAnItem = this.deleteAnItem.bind(this);
@@ -51,7 +50,6 @@ class App extends Component {
 
   downloadDailyExpense(day, response) {
     if (response.data !== null) {
-
       const data = [];
       Object.values(response.data).map((key) => {
         data.push(Object.values(key)[0]);
@@ -164,6 +162,11 @@ class App extends Component {
   }
 
   createNewItem(itemTitle, itemAmount, itemCreationDay) {
+    this.setState({
+      addEditButtonText: 'Add New Item',
+      placeholderForItemTitle: ' What did you spend your money on?',
+      placeholderForItemAmount: ' How much you spend?'
+    })
     const timestamp = Date.now();
     let newItem = {
       uniqueKey: timestamp,
@@ -279,8 +282,13 @@ class App extends Component {
     })
   }
 
-  editExpenseItem(itemCreationDay, listUniqueKey, title, amount, createdAt) {
-    console.log(itemCreationDay, listUniqueKey, title, amount, createdAt);
+  editExpenseItem(itemCreationDay, listUniqueKey, title, amount) {
+    this.deleteAnItem(itemCreationDay, listUniqueKey);
+    this.setState({
+      placeholderForItemTitle: title,
+      placeholderForItemAmount: amount,
+      addEditButtonText: 'Finish Editing'
+    })
   }
 
   render() {
@@ -294,10 +302,9 @@ class App extends Component {
             expenseList = {this.state.mondayExpense}
             deleteAnItem = {this.deleteAnItem}
             editExpenseItem = {this.editExpenseItem}
-            editItemTitle = {this.state.editItemTitle}
-            editItemAmount = {this.state.editItemAmount}
             placeholderForItemTitle = {this.state.placeholderForItemTitle}
             placeholderForItemAmount = {this.state.placeholderForItemAmount}
+            addEditButtonText = {this.state.addEditButtonText}
           />
         </div>
     );

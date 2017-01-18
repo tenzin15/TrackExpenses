@@ -15,7 +15,7 @@ class App extends Component {
       total: 0,
       day: ['Monday', 'Tuesday', 'Wednasday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       date: ['01/16/17', '01/17/17', '01/18/17', '01/19/17', '01/20/17', '01/21/17', '01/22/17'],
-      mondayExpense: [],  // has list of { itemTitle: '', itemAmount: '', createdAt: '', unqiueKey: '' }
+      mondayExpense: [],  // has list of { itemTitle: '', amount: '', createdAt: '', unqiueKey: '' }
       tuesdayExpense: [], // same for the rest
       wednasdayExpense: [],
       thursdayExpense: [],
@@ -54,48 +54,68 @@ class App extends Component {
       const data = [];
       Object.values(response.data).map((key) => {
         data.push(Object.values(key)[0]);
+        // dailyTotal.push(parseFloat(Object.values(key)[0].amount));
+      })
+      let dailyTotal = this.state.dailyTotal;
+      let total = 0;    // will store the total amount for each day from the firebase
+      data.map((el) => {
+        total += parseFloat(el.amount);
       })
 
       switch(day) {
            case("Monday"):
+            dailyTotal[0] = total;
             this.setState({
               mondayExpense: data,
+              dailyTotal: dailyTotal
             })
            break;
 
            case("Tuesday"):
+            dailyTotal[1] = total;
             this.setState({
               tuesdayExpense: data,
+              dailyTotal: dailyTotal
             })
            break;
 
            case("Wednasday"):
+            dailyTotal[2] = total;
             this.setState({
               wednasdayExpense: data,
+              dailyTotal: dailyTotal
             })
            break;
 
            case("Thursday"):
+            dailyTotal[3] = total;
             this.setState({
               thursdayExpense: data,
+              dailyTotal: dailyTotal
             })
            break;
 
            case("Friday"):
+            dailyTotal[4] = total;
             this.setState({
               fridayExpense: data,
+              dailyTotal: dailyTotal
             })
            break;
 
            case("Saturday"):
+            dailyTotal[5] = total;
             this.setState({
               saturdayExpense: data,
+              dailyTotal: dailyTotal
             })
            break;
 
            case("Sunday"):
+            dailyTotal[6] = total;
             this.setState({
               sundayExpense: data,
+              dailyTotal: dailyTotal
             })
            break;
         }
@@ -107,57 +127,77 @@ class App extends Component {
          case("Monday"):
           let mondayItems = this.state.mondayExpense;
           mondayItems.push(newItem);
+          let dailyTotal = this.state.dailyTotal;
+          dailyTotal[0] += parseFloat(newItem.amount);
           this.setState({
             mondayExpense: mondayItems,
-
+            dailyTotal: dailyTotal,
           })
          break;
 
          case("Tuesday"):
           let tuesdayItems = this.state.tuesdayExpense;
           tuesdayItems.push(newItem);
+          let dailyTotal1 = this.state.dailyTotal;
+          dailyTotal1[1] += parseFloat(newItem.amount);
           this.setState({
-            tuesdayExpense: tuesdayItems
+            tuesdayExpense: tuesdayItems,
+            dailyTotal: dailyTotal1
           })
          break;
 
          case("Wednasday"):
           let wednasdayItems = this.state.wednasdayExpense;
           wednasdayItems.push(newItem);
+          let dailyTotal2 = this.state.dailyTotal;
+          dailyTotal2[2] += parseFloat(newItem.amount);
           this.setState({
-            wednasdayExpense: wednasdayItems
+            wednasdayExpense: wednasdayItems,
+            dailyTotal: dailyTotal2
           })
          break;
 
          case("Thursday"):
           let thursdayItems = this.state.thursdayExpense;
           thursdayItems.push(newItem);
+          let dailyTotal3 = this.state.dailyTotal;
+          dailyTotal3[3] += parseFloat(newItem.amount);
           this.setState({
-            thursdayExpense: thursdayItems
+            thursdayExpense: thursdayItems,
+            dailyTotal: dailyTotal3
           })
          break;
 
          case("Friday"):
           let fridayItems = this.state.fridayExpense;
           fridayItems.push(newItem);
+          let dailyTotal4 = this.state.dailyTotal;
+          dailyTotal4[4] += parseFloat(newItem.amount);
           this.setState({
-            fridayExpense: fridayItems
+            fridayExpense: fridayItems,
+            dailyTotal: dailyTotal4
           })
          break;
 
          case("Saturday"):
           let saturdayItems = this.state.saturdayExpense;
           saturdayItems.push(newItem);
+          let dailyTotal5 = this.state.dailyTotal;
+          dailyTotal5[5] += parseFloat(newItem.amount);
           this.setState({
-            saturdayExpense: saturdayItems
+            saturdayExpense: saturdayItems,
+            dailyTotal: dailyTotal5
           })
          break;
 
          case("Sunday"):
           let sundayItems = this.state.sundayExpense;
           sundayItems.push(newItem);
+          let dailyTotal6 = this.state.dailyTotal;
+          dailyTotal6[6] += parseFloat(newItem.amount);
           this.setState({
-            sundayExpense: sundayItems
+            sundayExpense: sundayItems,
+            dailyTotal: dailyTotal6
           })
          break;
       }
@@ -309,6 +349,18 @@ class App extends Component {
             placeholderForItemAmount = {this.state.placeholderForItemAmount}
             addEditButtonText = {this.state.addEditButtonText}
             dailyTotal = {this.state.dailyTotal[0]}
+          />
+          <Day
+            day={this.state.day[6]}
+            date={this.state.date[6]}
+            createNewItem = {this.createNewItem}
+            expenseList = {this.state.sundayExpense}
+            deleteAnItem = {this.deleteAnItem}
+            editExpenseItem = {this.editExpenseItem}
+            placeholderForItemTitle = {this.state.placeholderForItemTitle}
+            placeholderForItemAmount = {this.state.placeholderForItemAmount}
+            addEditButtonText = {this.state.addEditButtonText}
+            dailyTotal = {this.state.dailyTotal[6]}
           />
         </div>
     );

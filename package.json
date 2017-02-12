@@ -2,8 +2,9 @@
   "name": "TrackExpenses",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "react-scripts": "0.8.5"
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "NODE_ENV=dev nodemon ./bin/www"
   },
   "dependencies": {
     "axios": "^0.15.3",

@@ -94,12 +94,18 @@ class App extends Component {
       let daysInAWeek = ["Monday", "Tuesday", "Wednasday", "Thursday", "Friday", "Saturday", "Sunday"];
       let daysInDatabase = Object.keys(response.data);
       let responseData = [];
-      responseData[0] = "Below is how much you spend on each item, each day:\n\n\n";
+      responseData.push("Below is how much you spend on each item, each day:\n\n\n");
+      let totalForWeek = 0;
+      totalForWeek = this.state.dailyTotal.reduce((a,b) => {
+        return a+b;
+      }, 0);
+      responseData.push(`Total For Week: $${totalForWeek}  \n\n\n`);
       daysInAWeek.map((day, index) => {
         if (daysInDatabase.includes(day)) {
             let itemsList = Object.values(Object.values(response.data[day]))[0];
             let temp = [];
             temp.push(day.toUpperCase() + "\n\n");
+            temp.push(`Total For ${day}: $${this.state.dailyTotal[index]} \n\n`);
             Object.values(itemsList).map((item, idx) => {
               let itemDetails = Object.values(item)[0];
               temp.push(" " + itemDetails.title + "     $" + itemDetails.amount + "    @" + moment(itemDetails.createdAt).format('lll') + "\n");

@@ -3,6 +3,9 @@ import './styles/App.css';
 import Day from './components/Day';
 import Week from './components/Week';
 import axios from 'axios';
+import jsonfile from 'jsonfile';
+import FileSaver from 'file-saver';
+import moment from 'moment';
 
 class App extends Component {
   constructor() {
@@ -14,7 +17,8 @@ class App extends Component {
       weekName: '2017_week3',        // this week is third week of the 2017
       weeklyTotal: 0,
       day: ['Monday', 'Tuesday', 'Wednasday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      date: ['01/16/17', '01/17/17', '01/18/17', '01/19/17', '01/20/17', '01/21/17', '01/22/17'],
+      // date: ['01/16/17', '01/17/17', '01/18/17', '01/19/17', '01/20/17', '01/21/17', '01/22/17'],
+      date: ['', '', '', '', '', '', ''],
       mondayExpense: [],  // has list of { itemTitle: '', amount: '', createdAt: '', unqiueKey: '' }
       tuesdayExpense: [], // same for the rest
       wednasdayExpense: [],
@@ -62,6 +66,7 @@ class App extends Component {
     this.downloadDailyExpense = this.downloadDailyExpense.bind(this);
     this.updateStateAfterDelete = this.updateStateAfterDelete.bind(this);
     this.editExpenseItem = this.editExpenseItem.bind(this);
+    this.downloadToExcel = this.downloadToExcel.bind(this);
   }
 
   componentDidMount() {
@@ -76,6 +81,37 @@ class App extends Component {
         this.downloadDailyExpense(day, response);
       })
     })
+  }
+
+  // User can download the credit expense report
+  downloadToExcel() {
+    axios({
+        url: `/expenseList/${this.state.weekName}/.json`,
+        baseURL: 'https://trackexpenses-4bcf1.firebaseio.com/',
+        method: "GET",
+    })
+    .then((response) => {
+      let daysInAWeek = ["Monday", "Tuesday", "Wednasday", "Thursday", "Friday", "Saturday", "Sunday"];
+      let daysInDatabase = Object.keys(response.data);
+      let responseData = [];
+      responseData[0] = "Below is how much you spend on each item, each day:\n\n\n";
+      daysInAWeek.map((day, index) => {
+        if (daysInDatabase.includes(day)) {
+            let itemsList = Object.values(Object.values(response.data[day]))[0];
+            let temp = [];
+            temp.push(day.toUpperCase() + "\n\n");
+            Object.values(itemsList).map((item, idx) => {
+              let itemDetails = Object.values(item)[0];
+              temp.push(" " + itemDetails.title + "     $" + itemDetails.amount + "    @" + moment(itemDetails.createdAt).format('lll') + "\n");
+            })
+            temp.push("\n\n");
+            responseData.push(temp);
+        }
+      })
+      // save the parse expense detials for the week into the followign text file
+      let blob = new Blob(responseData, {type: "text/plain;charset=utf-8"});
+      FileSaver.saveAs(blob, "Weekly Expense Report.txt");
+    });
   }
 
   downloadDailyExpense(day, response) {
@@ -547,7 +583,11 @@ class App extends Component {
   render() {
     return (
         <div className="App">
-          <Week week={this.state.week} weeklyTotal={this.state.weeklyTotal} />
+          <Week
+            week={this.state.week}
+            weeklyTotal={this.state.weeklyTotal}
+            downloadToExcel={this.downloadToExcel}
+          />
           <Day
             day={this.state.day[0]}
             date={this.state.date[0]}

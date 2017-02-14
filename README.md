@@ -1,6 +1,6 @@
 # TrackExpenses - Keey track your weekly expenses 
 
-#### [Visit Project](http://scout-schooling-21356.bitballoon.com/) 
+#### [Visit Project](https://tenzin15.github.io/track_expenses/) 
 #### Summary
 
 TrackExpenses is a financial management app that will keep track of your weeekly expenses. Every time you buy somthing, you can add that item and how much it cost to this app, and at the end of the week, it'll show you exactly how much you spend on what, and the total expense that week. 

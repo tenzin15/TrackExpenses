@@ -7,8 +7,11 @@ TrackExpenses is a financial management app that will keep track of your weeekly
 
 #### Technologies
   HTML5/CSS3/JS6
+  
   React
+  
   Firebase
+  
   Axios (for API Calls)
 
 #### Wireframe

@@ -21,13 +21,14 @@ class Expense extends React.Component {
                           }
                     }
             >
-            Edit
+            <span id="pencilEdit">&#9998;</span>
           </button>
           <button
             className={this.props.day}
             onClick={() => {this.props.deleteAnItem(this.props.day, this.props.uniqueKey)}}>
-            Delete
+            <span id="deleteIcon">&#10008;</span>
           </button>
+          <br />
         </li>
     )
   }

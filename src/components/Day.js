@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import '../styles/Day.css';
 import Expense from './Expense'
 import moment from 'moment'
+import utf8 from 'utf8';
+
 
 class Day extends Component {
   render() {
     const returnContentWhenDefined = () => {
       if (this.props.expenseList) {
+        // reverse the expense list
+        let reverseExpenseList = [];
+        let i = 0, length = this.props.expenseList.length;
+        while (i < length) {
+          reverseExpenseList.unshift(this.props.expenseList[i++]);
+        }
         return (
-          this.props.expenseList.reverse().map(oneExpenseObject =>
+          reverseExpenseList.map(oneExpenseObject =>
               <Expense
                      uniqueKey={oneExpenseObject.uniqueKey}
                      itemTitle={oneExpenseObject.title}
@@ -26,7 +34,7 @@ class Day extends Component {
     return (
       <div className="Day" id={this.props.day}>
         <header id="day_total_header">
-          <span id="daily_total">Total: ${this.props.dailyTotal}</span>
+          <span id="daily_total">{this.props.day}'s Total: ${this.props.dailyTotal}</span>
           <h3 id="h3_day_date">{this.props.day} {this.props.date}</h3>
         </header>
         <span id="itemNameLabel"> Item Name: </span>

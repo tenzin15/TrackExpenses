@@ -29,35 +29,35 @@ class App extends Component {
 
       placeholderForItemTitle: ' What did you spend your money on?',
       placeholderForItemAmount: ' How much you spend?',
-      addEditButtonText: 'Add New Item',
+      addEditButtonText: '+ New Item',
 
       placeholderForItemTitleMonday: null,
       placeholderForItemAmountMonday: null,
-      addEditButtonTextMonday: 'Add New Item',
+      addEditButtonTextMonday: '+ New Item',
 
       placeholderForItemTitleTuesday: null,
       placeholderForItemAmountTuesday: null,
-      addEditButtonTextTuesday: 'Add New Item',
+      addEditButtonTextTuesday: '+ New Item',
 
       placeholderForItemTitleWednasday: null,
       placeholderForItemAmountWednasday: null,
-      addEditButtonTextWednasday: 'Add New Item',
+      addEditButtonTextWednasday: '+ New Item',
 
       placeholderForItemTitleThursday: null,
       placeholderForItemAmountThursday: null,
-      addEditButtonTextThursday: 'Add New Item',
+      addEditButtonTextThursday: '+ New Item',
 
       placeholderForItemTitleFriday: null,
       placeholderForItemAmountFriday: null,
-      addEditButtonTextFriday: 'Add New Item',
+      addEditButtonTextFriday: '+ New Item',
 
       placeholderForItemTitleSaturday: null,
       placeholderForItemAmountSaturday: null,
-      addEditButtonTextSaturday: 'Add New Item',
+      addEditButtonTextSaturday: '+ New Item',
 
       placeholderForItemTitleSunday: null,
       placeholderForItemAmountSunday: null,
-      addEditButtonTextSunday: 'Add New Item',
+      addEditButtonTextSunday: '+ New Item',
       dailyTotal: [0, 0, 0, 0, 0, 0, 0]       // daily total for 7 days of the week
     }
     this.createNewItem = this.createNewItem.bind(this);
@@ -311,57 +311,57 @@ class App extends Component {
     switch(itemCreationDay) {
            case("Monday"):
            this.setState({
-              placeholderForItemTitleMonday: ' Add New Item',
+              placeholderForItemTitleMonday: ' What did you spend your money on?',
               placeholderForItemAmountMonday: ' How much you spend?',
-              addEditButtonTextMonday: 'Add New Item'
+              addEditButtonTextMonday: '+ New Item'
             })
            break;
 
            case("Tuesday"):
            this.setState({
-              placeholderForItemTitleTuesday: ' Add New Item',
+              placeholderForItemTitleTuesday: ' What did you spend your money on?',
               placeholderForItemAmountTuesday: ' How much you spend?',
-              addEditButtonTextTuesday: 'Add New Item'
+              addEditButtonTextTuesday: '+ New Item'
             })
            break;
 
            case("Wednasday"):
            this.setState({
-              placeholderForItemTitleWednasday: ' Add New Item',
+              placeholderForItemTitleWednasday: ' What did you spend your money on?',
               placeholderForItemAmountWednasday: ' How much you spend?',
-              addEditButtonTextWednasday: 'Add New Item'
+              addEditButtonTextWednasday: '+ New Item'
             })
            break;
 
            case("Thursday"):
            this.setState({
-              placeholderForItemTitleThursday: ' Add New Item',
+              placeholderForItemTitleThursday: ' What did you spend your money on?',
               placeholderForItemAmountThursday: ' How much you spend?',
-              addEditButtonTextThursday: 'Add New Item'
+              addEditButtonTextThursday: '+ New Item'
             })
            break;
 
            case("Friday"):
            this.setState({
-              placeholderForItemTitleFriday: ' Add New Item',
+              placeholderForItemTitleFriday: ' What did you spend your money on?',
               placeholderForItemAmountFriday: ' How much you spend?',
-              addEditButtonTextFriday: 'Add New Item'
+              addEditButtonTextFriday: '+ New Item'
             })
            break;
 
            case("Saturday"):
            this.setState({
-              placeholderForItemTitleSaturday: ' Add New Item',
+              placeholderForItemTitleSaturday: ' What did you spend your money on?',
               placeholderForItemAmountSaturday: ' How much you spend?',
-              addEditButtonTextSaturday: 'Add New Item'
+              addEditButtonTextSaturday: '+ New Item'
             })
            break;
 
            case("Sunday"):
            this.setState({
-              placeholderForItemTitleSunday: ' Add New Item',
+              placeholderForItemTitleSunday: ' What did you spend your money on?',
               placeholderForItemAmountSunday: ' How much you spend?',
-              addEditButtonTextSunday: 'Add New Item'
+              addEditButtonTextSunday: '+ New Item'
             })
            break;
     }

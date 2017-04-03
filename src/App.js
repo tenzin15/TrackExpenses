@@ -33,6 +33,7 @@ class App extends Component {
 
       placeholderForItemTitleMonday: null,
       placeholderForItemAmountMonday: null,
+      valueForItemTitleMonday: null,
       addEditButtonTextMonday: '+ New Item',
 
       placeholderForItemTitleTuesday: null,
@@ -312,6 +313,7 @@ class App extends Component {
            case("Monday"):
            this.setState({
               placeholderForItemTitleMonday: ' What did you spend your money on?',
+                      placeholderForItemTitleMonday: 'valueou spend your money on?',
               placeholderForItemAmountMonday: ' How much you spend?',
               addEditButtonTextMonday: '+ New Item'
             })
@@ -529,6 +531,7 @@ class App extends Component {
         switch(itemCreationDay) {
            case("Monday"):
            this.setState({
+              valueForItemTitleMonday: title,
               placeholderForItemTitleMonday: title,
               placeholderForItemAmountMonday: amount,
               addEditButtonTextMonday: 'Finish Editing'
@@ -601,6 +604,7 @@ class App extends Component {
             expenseList = {this.state.mondayExpense}
             deleteAnItem = {this.deleteAnItem}
             editExpenseItem = {this.editExpenseItem}
+            valueForItemTitle = {this.state.valueForItemTitleMonday}
             placeholderForItemTitle = {this.state.placeholderForItemTitleMonday}
             placeholderForItemAmount = {this.state.placeholderForItemAmountMonday}
             addEditButtonText = {this.state.addEditButtonTextMonday}
@@ -612,7 +616,9 @@ class App extends Component {
             createNewItem = {this.createNewItem}
             expenseList = {this.state.tuesdayExpense}
             deleteAnItem = {this.deleteAnItem}
+            valueForItemTitle = {this.state.valueForItemTitleMonday}
             editExpenseItem = {this.editExpenseItem}
+            valueForItemTitle = '{this.state.valueForItemTitleMonday}'
             placeholderForItemTitle = {this.state.placeholderForItemTitleTuesday}
             placeholderForItemAmount = {this.state.placeholderForItemAmountTuesday}
             addEditButtonText = {this.state.addEditButtonTextTuesday}
@@ -625,6 +631,7 @@ class App extends Component {
             expenseList = {this.state.wednasdayExpense}
             deleteAnItem = {this.deleteAnItem}
             editExpenseItem = {this.editExpenseItem}
+            valueForItemTitle = '{this.state.valueForItemTitleMonday}'
             placeholderForItemTitle = {this.state.placeholderForItemTitleWednasday}
             placeholderForItemAmount = {this.state.placeholderForItemAmountWednasday}
             addEditButtonText = {this.state.addEditButtonTextWednasday}
@@ -637,6 +644,7 @@ class App extends Component {
             expenseList = {this.state.thursdayExpense}
             deleteAnItem = {this.deleteAnItem}
             editExpenseItem = {this.editExpenseItem}
+            valueForItemTitle = '{this.state.valueForItemTitleMonday}'
             placeholderForItemTitle = {this.state.placeholderForItemTitleThursday}
             placeholderForItemAmount = {this.state.placeholderForItemAmountThursday}
             addEditButtonText = {this.state.addEditButtonTextThursday}
@@ -649,6 +657,7 @@ class App extends Component {
             expenseList = {this.state.fridayExpense}
             deleteAnItem = {this.deleteAnItem}
             editExpenseItem = {this.editExpenseItem}
+            valueForItemTitle = '{this.state.valueForItemTitleMonday}'
             placeholderForItemTitle = {this.state.placeholderForItemTitleFriday}
             placeholderForItemAmount = {this.state.placeholderForItemAmountFriday}
             addEditButtonText = {this.state.addEditButtonTextFriday}
@@ -661,6 +670,7 @@ class App extends Component {
             expenseList = {this.state.saturdayExpense}
             deleteAnItem = {this.deleteAnItem}
             editExpenseItem = {this.editExpenseItem}
+            valueForItemTitle = '{this.state.valueForItemTitleMonday}'
             placeholderForItemTitle = {this.state.placeholderForItemTitleSaturday}
             placeholderForItemAmount = {this.state.placeholderForItemAmountSaturday}
             addEditButtonText = {this.state.addEditButtonTextSaturday}
@@ -673,6 +683,7 @@ class App extends Component {
             expenseList = {this.state.sundayExpense}
             deleteAnItem = {this.deleteAnItem}
             editExpenseItem = {this.editExpenseItem}
+            valueForItemTitle = '{this.state.valueForItemTitleMonday}'
             placeholderForItemTitle = {this.state.placeholderForItemTitleSunday}
             placeholderForItemAmount = {this.state.placeholderForItemAmountSunday}
             addEditButtonText = {this.state.addEditButtonTextSunday}

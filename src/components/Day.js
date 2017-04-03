@@ -6,6 +6,21 @@ import utf8 from 'utf8';
 
 
 class Day extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = ({
+  //     value: this.props
+  //   })
+  // }
+
+  // componentWillReceiveProps(nextProps) {
+  //   // You don't have to do this check first, but it can help prevent an unneeded render
+  //   if (nextProps !== this.state.value) {
+  //     this.setState({ value: nextProps });
+  //   }
+  //   console.log(this.state.value.valueForItemTitle)
+  // }
+
   render() {
     const returnContentWhenDefined = () => {
       if (this.props.expenseList) {
@@ -43,7 +58,6 @@ class Day extends Component {
           type="text"
           placeholder={this.props.placeholderForItemTitle}
           ref={(input) => { this.itemTitleInput = input; }}
-          required
         />
         <span id="itemAmountLabel"> Item Amount: $</span>
         <input
